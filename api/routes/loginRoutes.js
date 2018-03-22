@@ -5,8 +5,8 @@ module.exports = function(app) {
       .post(userList.login);
     app.route('/authenticate')
         .post(userList.authenticate);
-    app.route('/browser')
-        .post(userList.browser);
+    app.route('/agent')
+        .get(userList.browser);
     app.route('/signup')
       .post(userList.create_a_user);
 };

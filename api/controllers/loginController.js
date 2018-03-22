@@ -33,8 +33,12 @@ exports.authenticate = function (req, res) {
 
 exports.browser= function (req, res) {
     res.set('Access-Control-Allow-Origin', '*');
-    console.log(req.headers['user-agent'])
-}
+    if(req.headers['user-agent'] === 'ThoughtWorks-browser') {
+        res.send({isAuthenticated: true})
+    }
+    res.send({isAuthenticated: false});
+};
+
 exports.create_a_user = function(req, res) {
   var new_user = new User(req.body);
 
