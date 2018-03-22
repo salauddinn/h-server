@@ -12,18 +12,29 @@ exports.list_all_users = function(req, res) {
 };
 
 exports.login = function (req, res) {
-
-        if( req.body.password ==="!abcd1234"){
+    res.set('Access-Control-Allow-Origin', '*');
+        if( req.body.password ==="396"){
             res.json({ isAuthenticated: true});
             }
         else {
             res.json({ isAuthenticated: false });
         }
-
-
-
     };
 
+exports.authenticate = function (req, res) {
+    res.set('Access-Control-Allow-Origin', '*');
+    if( req.body.password === "396" && req.body.username === "Elli08"){
+        res.json({ isAuthenticated: true});
+    }
+    else {
+        res.json({ isAuthenticated: false });
+    }
+};
+
+exports.browser= function (req, res) {
+    res.set('Access-Control-Allow-Origin', '*');
+    console.log(req.headers['user-agent'])
+}
 exports.create_a_user = function(req, res) {
   var new_user = new User(req.body);
 
